@@ -1,7 +1,7 @@
 from django.db.models import (Model,
                               CharField,
                               ForeignKey,
-                              CASCADE,)
+                              CASCADE, DO_NOTHING, )
 
 class Curator(Model):
     first_name = CharField(max_length = 20)
@@ -16,3 +16,20 @@ class Direction(Model):
                        related_name = 'direction')
     def __str__(self):
         return "напр. "+self.name
+class Group(Model):
+    group_name = CharField(max_length=20)
+    curator = ForeignKey('Direction',
+                         on_delete=CASCADE,
+                         related_name='group',
+                         )
+    def __str__(self):
+        return "группа "+self.group_name
+class Student(Model):
+    surname = CharField(max_length = 10)
+    group = ForeignKey('Group',
+                       on_delete = DO_NOTHING,
+                       related_name = 'student')
+    def __str__(self):
+        return "Фамилия студента " + self.surname
+
+
