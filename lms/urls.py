@@ -1,6 +1,9 @@
 from rest_framework.routers import DefaultRouter
-from lms.views import StudentViewSet
-student_router=DefaultRouter()
-student_router.register(r'student',
+from lms.views import StudentViewSet,CuratorViewSet
+lms_router=DefaultRouter()
+lms_router.register(r'student',
                 StudentViewSet,
                 basename='user')
+lms_router.register(r'student',
+                CuratorViewSet,
+                basename='curator')

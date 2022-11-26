@@ -18,9 +18,9 @@ from django.template.defaulttags import url
 from django.urls import path, include
 
 import lms
-from lms.urls import student_router
+from lms.urls import lms_router
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('lms/', include(student_router.urls)),
+    path('lms/', include(lms_router.urls)),
 ]
